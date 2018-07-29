@@ -2,6 +2,11 @@ en:
   flash:
     todo:
       created: TODO list successfully created.
+  buttons:
+    signout: Sign out
+    login: Log in
+    registration: Registration
+    todolist: My TODO Lists
   todos:
     index:
       lists: TODO lists

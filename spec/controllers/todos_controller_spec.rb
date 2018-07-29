@@ -3,10 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe TodosController, type: :controller do
-  let!(:todo) { create(:todo) }
-  let!(:todos) { create_list(:todo, 3) }
-  let!(:todo_valid_params) { attributes_for(:todo) }
+  let!(:user) { create(:user) }
+  let!(:todo) { create(:todo, user_id: user.id) }
+  let!(:todos) { create_list(:todo, 3, user_id: user.id) }
+  let!(:todo_valid_params) { attributes_for(:todo, user_id: user.id) }
   let!(:tasks) { create_list(:task, 10, todo_id: todo.id) }
+
+  before do
+    allow_any_instance_of(described_class).to receive(:current_user) {user}
+    sign_in user
+  end
 
   describe '#index' do
     before { get :index }

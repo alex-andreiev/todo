@@ -1,2 +1,15 @@
-nav.navbar.navbar-dark.bg-dark
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   a.navbar-brand.h1. href='/' TODO List
+
+  button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
+    span.navbar-toggler-icon
+
+  .collapse.navbar-collapse#navbarSupportedContent
+    ul.nav.navbar-nav.navbar-right
+      - if current_user
+        li.ml-2.mr-2= link_to t('buttons.signout'), destroy_user_session_path, method: :delete
+        li.ml-2.mr-2 =link_to t('buttons.todolist'), todos_path
+
+      - else
+        li.ml-2.mr-2= link_to t('buttons.login'), new_user_session_path
+        li.ml-2.mr-2= link_to t('buttons.registration'), new_user_registration_path
