@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class TodosController < ApplicationController
-  before_action :set_todo, only: :show
+   before_action :set_todo, only: :show
 
   def index
-    @todos = Todo.all
+    @todos = current_user.todos
   end
 
   def show
@@ -17,14 +17,14 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.create(todo_params)
+    @todo = current_user.todos.create(todo_params)
     redirect_to @todo
   end
 
   private
 
   def todo_params
-    params.require(:todo).permit(:title, :description)
+    params.require(:todo).permit(:user_id, :title, :description)
   end
 
   def set_todo

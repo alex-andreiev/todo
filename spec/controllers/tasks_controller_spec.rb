@@ -3,10 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
-  let!(:todo) { create(:todo) }
+  let!(:user) { create(:user) }
+  let!(:todo) { create(:todo, user_id: user.id) }
   let!(:task) { create(:task, todo_id: todo.id) }
   let!(:tasks) { create_list(:task, 10, todo_id: todo.id) }
   let!(:task_valid_attributes) { attributes_for(:task, todo_id: todo.id) }
+
+  before do
+    allow_any_instance_of(described_class).to receive(:current_user) {user}
+    sign_in user
+  end
 
   describe '#new' do
     before { get :new, params: { todo_id: todo.id }, xhr: true }
