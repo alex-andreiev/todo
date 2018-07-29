@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe TodosController, type: :controller do
@@ -19,7 +21,7 @@ RSpec.describe TodosController, type: :controller do
     before { get :show, params: params }
 
     it { is_expected.to render_template 'show' }
-    it { expect(assigns(:todo)).to eq todo}
+    it { expect(assigns(:todo)).to eq todo }
     it { expect(assigns(:tasks).count).to eq 10 }
   end
 

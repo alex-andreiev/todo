@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
@@ -18,7 +20,7 @@ RSpec.describe TasksController, type: :controller do
     subject { post :create, params: params, xhr: true }
 
     it { is_expected.to redirect_to todo_path(todo) }
-    it { expect{ subject }.to change(Task, :count).by(1) }
+    it { expect { subject }.to change(Task, :count).by(1) }
   end
 
   describe '#edit' do
@@ -35,7 +37,7 @@ RSpec.describe TasksController, type: :controller do
 
     it { is_expected.to redirect_to todo_path(todo) }
     it { expect { subject }.to change { task.reload.task }.from(task.task).to(text) }
-   end
+  end
 
   describe '#destroy' do
     let(:params) { { todo_id: todo.id, id: task.id } }
