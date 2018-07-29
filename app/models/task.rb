@@ -1,0 +1,5 @@
+class Task < ApplicationRecord
+  belongs_to :todo
+
+  validates :task, presence: true, length: { maximum: 300 }
+end

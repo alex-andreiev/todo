@@ -1,0 +1,3 @@
+= simple_form_for @task, url: todo_tasks_url, remote: true do |form|
+  = form.input :task, as: :text, label: false, placeholder: t('.task'), maxlength: 300
+  = form.submit t('.submit'), class: 'btn btn-primary'

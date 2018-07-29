@@ -1,0 +1,4 @@
+= simple_form_for @todo, remote: true do |form|
+  = form.input :title, label: false, placeholder: t('.title'), maxlength: 50
+  = form.input :description, label: false, placeholder: t('.description'), maxlength: 700
+  = form.submit t('.submit'), html: { class: 'btn' }

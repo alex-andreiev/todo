@@ -1,0 +1,18 @@
+.row
+  .col-12
+    h1.h4.text-centera.font-weight-bold
+      =@todo.title
+    .h5.text-left
+      = @todo.description
+
+h2.text-left= t('.tasks')
+
+.row
+  .col-12.mp-1
+    ul.list-group= render partial: 'tasks/task', collection: @tasks, as: :task
+
+
+.row.mt-2
+  .col-12#new_task
+    .text-center.mt-1= link_to t('.new_task'), new_todo_task_path(@todo), remote: true, class: 'btn btn-primary'
+
