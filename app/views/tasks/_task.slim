@@ -1,0 +1,8 @@
+li.list-group-item.h5
+  .row
+    .col-8 data-task=task.id
+       =task.task
+    .col-4.text-right
+      .btn-group role='group'
+        = link_to t('.edit'), edit_todo_task_path(@todo, task), remote: true, class: 'btn btn-info'
+        = link_to t('delete'), todo_task_path(@todo, task), remote: true, method: :delete, data: { confirm: t('.delete') }, class: 'btn btn-danger'
