@@ -1,8 +1,10 @@
 li.list-group-item.h5
   .row
-    .col-8 data-task=task.id
+    .col-7 data-task=task.id
+       = t('.priority')
+       span.font-weight-bold class="#{priority_class(task.priority)}"= task.priority
        .h6=task.task
-    .col-4.text-right
+    .col-5.text-right
       .btn-group role='group'
         = link_to t('.download'), task.attachment_url, download: '', target: '_blank', class: 'btn btn-warning' if task.attachment_url
         = link_to t('.edit'), edit_todo_task_path(@todo, task), remote: true, class: 'btn btn-info'

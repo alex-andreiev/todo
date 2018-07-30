@@ -8,7 +8,7 @@ class TodosController < ApplicationController
   end
 
   def show
-    @tasks = @todo.tasks
+    @tasks = @todo.tasks.order(priority: :desc)
   end
 
   def new
