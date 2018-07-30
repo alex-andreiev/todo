@@ -1,3 +1,4 @@
 = simple_form_for @task, url: todo_tasks_url, remote: true do |form|
   = form.input :task, as: :text, label: false, placeholder: t('.task'), maxlength: 300
+  = form.input :attachment, as: :file, label: false, input_html: { class: 'form-control-file' }
   = form.submit t('.submit'), class: 'btn btn-primary'
