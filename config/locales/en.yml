@@ -7,6 +7,7 @@ en:
     login: Log in
     registration: Registration
     todolist: My TODO Lists
+    attach: Attch file
   todos:
     index:
       lists: TODO lists
@@ -26,3 +27,4 @@ en:
     task:
       delete: Delete
       edit: Edit
+      download: Download
