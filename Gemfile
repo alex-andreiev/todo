@@ -13,15 +13,15 @@ gem 'devise'
 gem 'faker'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
+gem 'remotipart', '~> 1.2'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'slim'
-gem 'sqlite3'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'remotipart', '~> 1.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

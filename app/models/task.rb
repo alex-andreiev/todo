@@ -6,4 +6,6 @@ class Task < ApplicationRecord
   validates :task, presence: true, length: { maximum: 300 }
 
   mount_uploader :attachment, AttachmentUploader
+
+  enum priority: %w[whenever low medium high immediate]
 end

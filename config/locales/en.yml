@@ -28,3 +28,6 @@ en:
       delete: Delete
       edit: Edit
       download: Download
+      confirm: Confirm
+      priority: 'Priority: '
+      deadline: 'Deadline: '
