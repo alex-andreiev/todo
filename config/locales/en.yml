@@ -18,6 +18,9 @@ en:
       submit: Submit
     todo:
       edit: Edit
+    show:
+      new_task: New task
+      tasks: Tasks
   tasks:
     form:
       submit: Save task

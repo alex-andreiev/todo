@@ -1,0 +1,11 @@
+ua:
+  simple_form:
+    "yes": 'Так'
+    "no": 'Ні'
+    required:
+      text: "обов'язково"
+      mark: '*'
+    error_notification:
+      default_message: "Перегляньте наведені нижче проблеми:"
+  date:
+    order: [ !ruby/symbol day, !ruby/symbol month, !ruby/symbol year ]

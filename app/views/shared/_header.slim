@@ -13,3 +13,6 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       - else
         li.ml-2.mr-2= link_to t('buttons.login'), new_user_session_path
         li.ml-2.mr-2= link_to t('buttons.registration'), new_user_registration_path
+
+      li= link_to image_tag('en.png') , locale_path(:en), method: :patch
+      li= link_to image_tag('ua.png') , locale_path(:ua), method: :patch
