@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TodosController < ApplicationController
-   before_action :set_todo, only: :show
+   before_action :set_todo, only: %i[show edit update destroy]
 
   def index
     @todos = current_user.todos
@@ -19,6 +19,18 @@ class TodosController < ApplicationController
   def create
     @todo = current_user.todos.create(todo_params)
     redirect_to @todo
+  end
+
+  def edit
+    render layout: false
+  end
+
+  def update
+    redirect_to todos_path if @todo.update(todo_params)
+  end
+
+  def destroy
+    redirect_to todos_path if @todo.destroy
   end
 
   private

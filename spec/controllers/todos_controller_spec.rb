@@ -45,4 +45,32 @@ RSpec.describe TodosController, type: :controller do
     it { is_expected.to redirect_to todo_path(Todo.last.id) }
     it { expect { subject }.to change(Todo, :count).by(1) }
   end
+
+  describe '#edit' do
+    let(:params) { { id: todo.id } }
+
+    before { get :edit, params: params }
+
+    it { is_expected.to render_template 'edit' }
+  end
+
+  describe '#update' do
+    let(:title) { Faker::Lorem.sentence }
+    let(:params) { { id: todo.id, todo: { title: title } } }
+
+    subject { patch :update, params: params }
+
+    it { is_expected.to redirect_to todos_path }
+    it { expect { subject }.to change { todo.reload.title }.from(todo.title).to(title) }
+  end
+
+  describe '#destroy' do
+    let(:params) { { id: todo.id } }
+
+    subject { delete :destroy, params: params }
+
+    it { is_expected.to redirect_to todos_path }
+    it { expect { subject }.to change(Todo, :count).by(-1) }
+    #it { expect(Task.count).to eq 10 }
+  end
 end
