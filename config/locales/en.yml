@@ -16,6 +16,8 @@ en:
       title: Title
       description: Description
       submit: Submit
+    todo:
+      edit: Edit
   tasks:
     form:
       submit: Save task
@@ -31,3 +33,7 @@ en:
       confirm: Confirm
       priority: 'Priority: '
       deadline: 'Deadline: '
+  welcome:
+    index:
+      title: Welcome to Rails TODO application!
+      description: "This application offers create lists of TODO's. You can register in application and create(edit, destroy) in your profile the lists of tasks and add the TODO's to the list. After that you can mark TODO's as comleted. Completed TODO's can be removed."

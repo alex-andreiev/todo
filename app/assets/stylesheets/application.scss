@@ -5,8 +5,22 @@ html, body {
   margin: 0;
   width: 100vw;
   overflow: hidden;
+  background: #e8e8e8;
 }
 
 .nostyle-link:hover {
   text-decoration: none;
 }
+
+li {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #9D5C63;
+    text-decoration: none;
+  }
+}
+
+
