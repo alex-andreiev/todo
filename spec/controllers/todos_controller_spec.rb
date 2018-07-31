@@ -55,8 +55,8 @@ RSpec.describe TodosController, type: :controller do
   end
 
   describe '#update' do
-    let(:title) { Faker::Lorem.sentence }
-    let(:params) { { id: todo.id, todo: { title: title } } }
+    let!(:title) { Faker::Lorem.word }
+    let!(:params) { { id: todo.id, todo: { title: title } } }
 
     subject { patch :update, params: params }
 
