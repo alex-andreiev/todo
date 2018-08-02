@@ -1,4 +1,6 @@
-= simple_form_for @todo, remote: true do |form|
-  = form.input :title, label: false, placeholder: t('.title'), maxlength: 50
-  = form.input :description, label: false, placeholder: t('.description'), maxlength: 700, input_html: { rows: 7 }
-  = form.submit t('.submit'), class: 'btn btn-primary'
+.col-12.mt-2
+  = simple_form_for @todo, html: { data: { form: 'new' } }, remote: true do |form|
+    = form.input :title, label: false, placeholder: t('.title'), maxlength: 50
+    = form.input :description, label: false, placeholder: t('.description'), maxlength: 700, input_html: { rows: 7 }
+    = form.submit t('.submit'), class: 'btn btn-primary'
+    .btn.btn-danger data-exit='todo' =t('.new_todo_exit')

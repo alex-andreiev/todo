@@ -16,6 +16,7 @@ ua:
       title: Заголовок
       description: Опис
       submit: Додати
+      new_todo_exit: Закрити
     todo:
       edit: Редагувати
     show:
@@ -26,9 +27,11 @@ ua:
       submit:  Зберегти завдання
       task:
         new_task: Додати нове завдання
+      new_task_exit: Закрити
     edit_form:
       task: Тект завдання
       submit: Оновити завдання
+      edit_task_exit: Закрити
     task:
       delete: Видатити
       edit: Редагувати

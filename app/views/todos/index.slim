@@ -2,8 +2,10 @@ h1.text-center= t('.lists')
 
 .container
   .row
-    .col-12.mp-1
+    .col-12.mb-1
       ul.list-group= render partial: 'todo', collection: @todos, as: :todo
 
-  div#todo.text-center.mt-1
-    = link_to t('.new'), new_todo_path, remote: true, class: 'btn btn-primary'
+  .row.text-center
+    .col-12
+      div#todo
+      = link_to t('.new'), new_todo_path, remote: true, class: 'btn btn-primary', data: { link: 'new' }
