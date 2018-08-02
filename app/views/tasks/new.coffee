@@ -1,1 +1,2 @@
-$('#new_task').html("<%= j render 'tasks/form' %>")
+$('#new_task').append("<%= j render 'tasks/form' %>")
+$('[data-link]').hide()

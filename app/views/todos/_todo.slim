@@ -1,7 +1,7 @@
-.row
-  .col-9 data-todo=todo.id
+.row data-todo=todo.id
+  .col-9 data-content='todo'
     = link_to content_tag(:li, todo.title, class: 'list-group-item'), todo, class: 'nostyle-link h5'
-  .col-3
+  .col-3 data-content='todo'
     .btn-group role='group'
       = link_to t('.edit'), edit_todo_path(todo), remote: true, class: 'btn btn-info'
       = link_to t('.delete'), todo_path(todo), remote: true, method: :delete, data: { confirm: t('.delete') }, class: 'btn btn-danger'

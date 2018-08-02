@@ -11,8 +11,7 @@ h2.text-left= t('.tasks')
   .col-12.mp-1
     ul.list-group= render partial: 'tasks/task', collection: @tasks, as: :task
 
-
-.row.mt-2
+.row.text-center.mt-2
   .col-12#new_task
-    .text-center.mt-1= link_to t('.new_task'), new_todo_task_path(@todo), remote: true, class: 'btn btn-primary'
-
+  .col-12
+    = link_to t('.new_task'), new_todo_task_path(@todo), remote: true, class: 'btn btn-primary', data: { link: 'new' }

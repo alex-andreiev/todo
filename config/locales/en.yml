@@ -16,6 +16,7 @@ en:
       title: Title
       description: Description
       submit: Submit
+      new_todo_exit: Close
     todo:
       edit: Edit
     show:
@@ -26,9 +27,11 @@ en:
       submit: Save task
       task:
         new_task: Create new task
+      new_task_exit: Close
     edit_form:
       task: Write text
       submit: Update task
+      edit_task_exit: Close
     task:
       delete: Delete
       edit: Edit
