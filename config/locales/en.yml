@@ -8,6 +8,7 @@ en:
     registration: Registration
     todolist: My TODO Lists
     attach: Attch file
+    admin: Manage
   todos:
     index:
       lists: TODO lists
