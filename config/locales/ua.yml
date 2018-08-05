@@ -8,6 +8,7 @@ ua:
     registration: Реєстрація
     todolist: Мій список справ
     attach: Прикріпити файл
+    admin: Управління
   todos:
     index:
       lists: Список справ
