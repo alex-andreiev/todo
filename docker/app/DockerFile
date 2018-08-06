@@ -1,0 +1,17 @@
+FROM ruby:2.5.1
+RUN apt-get update && apt-get install -y apt-utils apt-transport-https
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn
+ENV RAILS_ROOT /var/www/todo
+RUN mkdir -p $RAILS_ROOT
+WORKDIR $RAILS_ROOT
+ENV RAILS_ENV='production'
+ENV RAKE_ENV='production'
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install --jobs 20 --retry 5 --without development test && gem install therubyracer
+COPY . .
+RUN bundle exec rake assets:precompile
+EXPOSE 3000
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

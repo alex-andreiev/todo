@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem.git'
 gem 'cancancan', '~> 2.0'
 gem 'carrierwave'
 gem 'coffee-rails', '~> 4.2'
