@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.5.3'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem.git'
@@ -49,5 +49,3 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
 end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
