@@ -1,0 +1,29 @@
+AllCops:
+  Exclude:
+  - 'db/**/*'
+  - 'bin/**/*'
+  - 'vendor/**/*'
+  - 'log/**/*'
+  - 'config/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Include:
+  - 'spec/**/*'
+  Max: 100
+
+Metrics/BlockLength:
+  Include:
+  - 'spec/**/*'
+  Max: 100
+
+Metrics/AbcSize:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false

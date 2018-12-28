@@ -10,7 +10,7 @@ RSpec.describe TodosController, type: :controller do
   let!(:tasks) { create_list(:task, 10, todo_id: todo.id) }
 
   before do
-    allow_any_instance_of(described_class).to receive(:current_user) {user}
+    allow_any_instance_of(described_class).to receive(:current_user) { user }
     sign_in user
   end
 
@@ -71,6 +71,6 @@ RSpec.describe TodosController, type: :controller do
 
     it { is_expected.to redirect_to todos_path }
     it { expect { subject }.to change(Todo, :count).by(-1) }
-    #it { expect(Task.count).to eq 10 }
+    # it { expect(Task.count).to eq 10 }
   end
 end

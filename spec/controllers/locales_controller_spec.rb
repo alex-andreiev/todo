@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe LocalesController, type: :controller do
-  describe "PATCH #update" do
+  describe 'PATCH #update' do
     describe 'change locale' do
       let(:back) { root_path }
 

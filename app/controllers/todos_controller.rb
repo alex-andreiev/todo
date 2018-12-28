@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TodosController < ApplicationController
-   before_action :set_todo, only: %i[show edit update destroy]
+  before_action :set_todo, only: %i[show edit update destroy]
 
   def index
     @todos = current_user.todos

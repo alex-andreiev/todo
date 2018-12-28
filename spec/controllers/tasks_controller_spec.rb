@@ -10,7 +10,7 @@ RSpec.describe TasksController, type: :controller do
   let!(:task_valid_attributes) { attributes_for(:task, todo_id: todo.id) }
 
   before do
-    allow_any_instance_of(described_class).to receive(:current_user) {user}
+    allow_any_instance_of(described_class).to receive(:current_user) { user }
     sign_in user
   end
 
