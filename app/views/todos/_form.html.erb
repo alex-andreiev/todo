@@ -1,0 +1,29 @@
+<%= form_with model: todo, class: "space-y-5" do |form| %>
+  <% if todo.errors.any? %>
+    <div class="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+      <p class="font-medium"><%= pluralize(todo.errors.count, "error") %> prevented this todo from being saved.</p>
+      <ul class="mt-2 list-disc pl-5">
+        <% todo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, t("todos.form.title"), class: "block text-sm font-medium text-slate-700" %>
+    <%= form.text_field :title, maxlength: 50, autofocus: true, class: "mt-2 block w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-950 focus:ring-4 focus:ring-slate-950/5", placeholder: t("todos.form.title") %>
+  </div>
+
+  <div>
+    <%= form.label :description, t("todos.form.description"), class: "block text-sm font-medium text-slate-700" %>
+    <%= form.text_area :description, rows: 7, maxlength: 700, class: "mt-2 block w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-950 focus:ring-4 focus:ring-slate-950/5", placeholder: t("todos.form.description") %>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-3">
+    <%= form.submit t("todos.form.submit"), class: "inline-flex items-center justify-center rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800" %>
+    <%= link_to cancel_path, class: "inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50" do %>
+      <%= t("todos.form.cancel") %>
+    <% end %>
+  </div>
+<% end %>

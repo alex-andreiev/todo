@@ -3,49 +3,48 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '4.0.2'
 
+gem 'administrate'
+gem 'benchmark'
+gem 'bigdecimal'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem.git'
-gem 'cancancan', '~> 2.0'
+gem 'cancancan', '~> 3.0'
 gem 'carrierwave'
-gem 'coffee-rails', '~> 4.2'
+gem 'csv'
 gem 'devise'
 gem 'faker'
-gem 'jbuilder', '~> 2.5'
-gem 'jquery-rails'
+gem 'jbuilder', '~> 2.7'
+gem 'mutex_m'
 gem 'pg'
-gem 'puma', '~> 3.11'
-gem 'rails', '~> 5.2.3'
-gem 'rails_admin', '~> 1.3'
+gem 'propshaft'
+gem 'puma', '~> 8.0.2'
+gem 'rack', '~> 3.0'
+gem 'rails', '~> 8.1.3'
 gem 'remotipart', '~> 1.2'
-gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
-gem 'slim'
+gem 'stimulus-rails'
+gem 'tailwindcss-rails'
 gem 'turbolinks', '~> 5'
+gem 'turbo-rails'
 gem 'uglifier', '>= 1.3.0'
 
-group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'factory_bot_rails'
-  gem 'pry'
-  gem 'rspec-rails', '~> 3.7'
-  gem 'rubocop', require: false
-end
-
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.7'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 end
 
-group :test do
-  gem 'capybara', '>= 2.15', '< 4.0'
-  gem 'chromedriver-helper'
-  gem 'database_cleaner'
-  gem 'rails-controller-testing'
+group :development, :test do
+  gem 'capybara'
+  gem 'database_cleaner-active_record'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 7.0'
+  gem 'rubocop-rails', require: false
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers', '~> 6.0'
   gem 'simplecov', require: false
 end
+
+gem 'pagy', '~> 9.4'

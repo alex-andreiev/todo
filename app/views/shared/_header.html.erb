@@ -1,0 +1,28 @@
+<header class="border-b border-slate-200 bg-white/90 backdrop-blur">
+  <nav class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+    <%= link_to root_path, class: "flex items-center gap-3" do %>
+      <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-950 text-sm font-semibold text-white">TL</span>
+      <span class="text-lg font-semibold tracking-tight text-slate-950">TODO List</span>
+    <% end %>
+
+    <div class="flex flex-wrap items-center justify-end gap-2 text-sm font-medium">
+      <% if current_user %>
+        <% if current_user.role?(:admin) && respond_to?(:admin_root_path) %>
+
+          <%= link_to t("buttons.admin"), admin_root_path, class: "inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50" %>
+        <% end %>
+        <%= link_to t("buttons.todolist"), todos_path, class: "inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50" %>
+        <%= button_to destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50" do %>
+          <%= t("buttons.signout") %>
+        <% end %>
+      <% else %>
+        <%= link_to t("buttons.login"), new_user_session_path, class: "inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50" %>
+        <%= link_to t("buttons.registration"), new_user_registration_path, class: "inline-flex items-center justify-center rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800" %>
+      <% end %>
+
+      <%= button_to locale_path(:en), method: :patch, class: "inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-2.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50" do %>
+        <%= image_tag("en.png", class: "h-5 w-5", alt: "English") %>
+      <% end %>
+    </div>
+  </nav>
+</header>

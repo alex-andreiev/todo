@@ -1,7 +1,13 @@
 en:
   flash:
     todo:
-      created: TODO list successfully created.
+      created: TODO list created.
+      updated: TODO list updated.
+      deleted: TODO list deleted.
+    task:
+      created: Task created.
+      updated: Task updated.
+      deleted: Task deleted.
   buttons:
     signout: Sign out
     login: Log in
@@ -13,33 +19,43 @@ en:
     index:
       lists: TODO lists
       new: Create new TODO list
+      empty: No TODO lists yet.
+      subtitle: Track lists, tasks, and deadlines in one workspace.
+      new_list: New list
     form:
       title: Title
       description: Description
-      submit: Submit
-      new_todo_exit: Close
+      submit: Save list
+      cancel: Cancel
     todo:
       edit: Edit
+      delete: Delete
+      tasks: tasks
     show:
       new_task: New task
       tasks: Tasks
+      empty_tasks: No tasks yet.
+      edit: Edit list
   tasks:
     form:
       submit: Save task
+      cancel: Cancel
       task:
         new_task: Create new task
       new_task_exit: Close
     edit_form:
       task: Write text
       submit: Update task
-      edit_task_exit: Close
+      edit_task_exit: Cancel
     task:
       delete: Delete
       edit: Edit
       download: Download
-      confirm: Confirm
+      confirm: Complete
       priority: 'Priority: '
       deadline: 'Deadline: '
+      status_done: Done
+      status_open: Open
   welcome:
     index:
       title: Welcome to Rails TODO application!

@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend 'todos', partial: 'todos/todo', locals: { todo: @todo } %>
+<%= turbo_stream.remove 'todos_empty' %>
+<%= turbo_stream.replace 'todo_form', partial: 'todos/new_button' %>
+<%= turbo_stream.replace 'flash', partial: 'shared/flash' %>

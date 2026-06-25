@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+# Devise 4.9 passes the registration route options as a positional hash.
+# Rails 8.1 deprecates that form for `resource`; keep the same Devise routes
+# while passing those options as keywords.
+module DeviseRouteKeywordArgs
+  protected
+
+  def devise_registration(mapping, controllers)
+    path_names = {
+      new: mapping.path_names[:sign_up],
+      edit: mapping.path_names[:edit],
+      cancel: mapping.path_names[:cancel]
+    }
+
+    options = {
+      only: %i[new create edit update destroy],
+      path: mapping.path_names[:registration],
+      path_names: path_names,
+      controller: controllers[:registrations]
+    }
+
+    resource :registration, **options do
+      get :cancel
+    end
+  end
+end
+
+ActionDispatch::Routing::Mapper.prepend(DeviseRouteKeywordArgs)

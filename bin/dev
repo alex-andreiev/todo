@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+if ! gem list foreman -i --silent; then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+# Default to port 3000 if not specified
+export PORT="${PORT:-3000}"
+
+while nc -z 127.0.0.1 "$PORT" >/dev/null 2>&1; do
+  echo "Port $PORT is busy, trying next..."
+  PORT=$((PORT + 1))
+done
+
+echo "Using port $PORT"
+
+# Let the debug gem allow remote connections,
+# but avoid loading until `debugger` is called
+export RUBY_DEBUG_OPEN="true"
+export RUBY_DEBUG_LAZY="true"
+
+exec foreman start -f Procfile.dev "$@"

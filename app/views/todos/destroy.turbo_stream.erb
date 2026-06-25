@@ -1,0 +1,3 @@
+<%= turbo_stream.remove dom_id(@todo) %>
+<%= turbo_stream.replace 'flash', partial: 'shared/flash' %>
+<%= turbo_stream.replace 'todo_form', partial: 'todos/new_button' %>

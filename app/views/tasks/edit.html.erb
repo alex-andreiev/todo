@@ -1,0 +1,11 @@
+<turbo-frame id="<%= dom_id(@task) %>">
+  <section class="mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400"><%= t("tasks.task.edit") %></p>
+      <h1 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950"><%= t("tasks.edit_form.submit") %></h1>
+    </div>
+    <div class="mt-6">
+      <%= render "form", task: @task, submit_label: t("tasks.edit_form.submit"), cancel_path: todo_path(@todo), cancel_label: t("tasks.edit_form.edit_task_exit") %>
+    </div>
+  </section>
+</turbo-frame>

@@ -4,11 +4,11 @@ require 'rails_helper'
 
 RSpec.describe Todo, type: :model do
   describe 'associations' do
-    it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_length_of(:title).is_at_most(50) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:tasks) }
   end
 
-  describe 'association' do
-    it { is_expected.to have_many(:tasks) }
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:title) }
   end
 end

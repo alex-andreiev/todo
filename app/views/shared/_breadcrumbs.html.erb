@@ -1,0 +1,14 @@
+<nav class="mx-auto mb-6 w-full max-w-6xl px-4 py-2 sm:px-6 lg:px-8" aria-label="Breadcrumb">
+  <ol class="flex list-none items-center gap-2 text-sm font-medium text-slate-500">
+    <% breadcrumbs.each_with_index do |crumb, index| %>
+      <li>
+        <%= link_to crumb[:path], class: "transition hover:text-slate-950", title: crumb[:name] do %>
+          <%= crumb[:name] %>
+        <% end %>
+      </li>
+      <% unless index == breadcrumbs.size - 1 %>
+        <li class="text-slate-300">/</li>
+      <% end %>
+    <% end %>
+  </ol>
+</nav>

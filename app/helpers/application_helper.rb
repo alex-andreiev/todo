@@ -1,15 +1,14 @@
-module ApplicationHelper
-  def confirm_button_class(status)
-    status ? 'success' : 'secondary'
-  end
+# frozen_string_literal: true
 
-  def priority_class(level)
-    case level
-    when 'whenever' then 'text-secondary'
-    when 'low' then 'text-primary'
-    when 'medium' then 'text-success'
-    when 'high' then 'text-warning'
-    when 'immediate' then 'text-danger'
-    end
+module ApplicationHelper
+  def breadcrumbs(todo: nil, task: nil)
+    crumbs = []
+    crumbs << { name: t('buttons.todolist'), path: todos_path }
+
+    crumbs << { name: todo.title, path: todo_path(todo) } if todo
+
+    crumbs << { name: task.task, path: todo_task_path(todo, task) } if task
+
+    crumbs
   end
 end

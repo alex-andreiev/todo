@@ -1,42 +1,66 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  before_action :set_todo, only: %i[new create update destroy]
-  before_action :set_task, only: %i[edit update destroy]
+  before_action :set_todo
+  before_action :set_task, only: %i[show edit update destroy]
+
+  def show; end
 
   def new
     @task = @todo.tasks.build
-    render layout: false
   end
+
+  def edit; end
 
   def create
-    @task = @todo.tasks.create!(task_params)
-    redirect_to @todo
-  end
+    @task = @todo.tasks.build(task_params)
 
-  def edit
-    render layout: false
+    respond_to do |format|
+      if @task.save
+        flash.now[:notice] = t('flash.task.created')
+        format.turbo_stream
+        format.html { redirect_to todo_task_path(@todo, @task), notice: t('flash.task.created') }
+      else
+        format.turbo_stream { render :new, status: :unprocessable_content }
+        format.html { render :new, status: :unprocessable_content }
+      end
+    end
   end
 
   def update
-    redirect_to @todo if @task.update(task_params)
+    respond_to do |format|
+      if @task.update(task_params)
+        flash.now[:notice] = t('flash.task.updated')
+        format.turbo_stream
+        format.html { redirect_to @todo, notice: t('flash.task.updated') }
+      else
+        format.turbo_stream { render :edit, status: :unprocessable_content }
+        format.html { render :edit, status: :unprocessable_content }
+      end
+    end
   end
 
   def destroy
-    redirect_to @todo if @task.destroy
+    @task.destroy
+
+    respond_to do |format|
+      flash.now[:notice] = t('flash.task.deleted')
+      format.turbo_stream
+      format.html { redirect_to @todo, notice: t('flash.task.deleted') }
+    end
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:id, :task, :todo_id, :completed_at, :attachment, :priority, :deadline)
+    params.expect(task: %i[task completed_at attachment priority deadline])
   end
 
   def set_todo
-    @todo = Todo.find(params[:todo_id])
+    @todo = current_user.todos.find(params.expect(:todo_id))
   end
 
   def set_task
-    @task = Task.find(params[:id] || params[:task_id])
+    @task = @todo.tasks.find(params.expect(:id))
   end
 end

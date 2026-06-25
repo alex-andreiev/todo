@@ -1,0 +1,40 @@
+<%= form_with model: [@todo, task], class: "space-y-5" do |form| %>
+  <% if task.errors.any? %>
+    <div class="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+      <p class="font-medium"><%= pluralize(task.errors.count, "error") %> prevented this task from being saved.</p>
+      <ul class="mt-2 list-disc pl-5">
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :task, t("tasks.edit_form.task"), class: "block text-sm font-medium text-slate-700" %>
+    <%= form.text_area :task, rows: 6, maxlength: 300, autofocus: true, class: "mt-2 block w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-950 focus:ring-4 focus:ring-slate-950/5" %>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <%= form.label :priority, class: "block text-sm font-medium text-slate-700" %>
+      <%= form.select :priority, Task.priorities.keys.map { |priority| [priority.humanize, priority] }, {}, class: "mt-2 block w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 shadow-sm outline-none transition focus:border-slate-950 focus:ring-4 focus:ring-slate-950/5" %>
+    </div>
+    <div>
+      <%= form.label :deadline, class: "block text-sm font-medium text-slate-700" %>
+      <%= form.date_field :deadline, class: "mt-2 block w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-950 shadow-sm outline-none transition focus:border-slate-950 focus:ring-4 focus:ring-slate-950/5" %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.label :attachment, class: "block text-sm font-medium text-slate-700" %>
+    <%= form.file_field :attachment, class: "mt-2 block w-full text-sm text-slate-700 file:mr-4 file:rounded-xl file:border-0 file:bg-slate-950 file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white hover:file:bg-slate-800" %>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-3">
+    <%= form.submit submit_label, class: "inline-flex items-center justify-center rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800" %>
+    <%= link_to cancel_path, class: "inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50" do %>
+      <%= cancel_label %>
+    <% end %>
+  </div>
+<% end %>

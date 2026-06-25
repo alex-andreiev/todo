@@ -1,0 +1,11 @@
+<turbo-frame id="<%= dom_id(@todo) %>">
+  <section class="mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400"><%= t("todos.todo.edit") %></p>
+      <h1 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950"><%= t("todos.todo.edit") %></h1>
+    </div>
+    <div class="mt-6">
+      <%= render "form", todo: @todo, cancel_path: todo_path(@todo) %>
+    </div>
+  </section>
+</turbo-frame>

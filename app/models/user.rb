@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :todos
+  has_many :todos, dependent: :destroy
 
   ROLES = %i[admin user].freeze
 
@@ -13,11 +15,11 @@ class User < ApplicationRecord
 
   def roles
     ROLES.reject do |r|
-      ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
+      roles_mask.to_i.nobits?(2**ROLES.index(r))
     end
   end
 
-  def has_role?(role)
+  def role?(role)
     roles.include?(role)
   end
 end

@@ -1,0 +1,32 @@
+<% if pagy.pages > 1 %>
+  <nav class="flex flex-col gap-3 border-t border-slate-200 px-6 py-4 text-sm sm:flex-row sm:items-center sm:justify-between" aria-label="Pagination">
+    <p class="text-slate-500">
+      Showing <span class="font-semibold text-slate-700"><%= pagy.from %>-<%= pagy.to %></span>
+      of <span class="font-semibold text-slate-700"><%= pagy.count %></span>
+    </p>
+
+    <div class="flex flex-wrap items-center gap-2">
+      <% if pagy.prev %>
+        <%= link_to "Previous", url_for(request.query_parameters.merge(page: pagy.prev)), class: "inline-flex items-center justify-center rounded-md border border-slate-200 bg-white px-3 py-2 font-semibold text-slate-700 transition hover:bg-slate-50" %>
+      <% else %>
+        <span class="inline-flex items-center justify-center rounded-md border border-slate-100 bg-slate-50 px-3 py-2 font-semibold text-slate-300">Previous</span>
+      <% end %>
+
+      <% pagy.series.each do |page| %>
+        <% if page == :gap %>
+          <span class="px-2 text-slate-400">...</span>
+        <% elsif page.is_a?(String) %>
+          <span class="inline-flex h-9 min-w-9 items-center justify-center rounded-md bg-slate-950 px-3 font-semibold text-white"><%= page %></span>
+        <% else %>
+          <%= link_to page, url_for(request.query_parameters.merge(page:)), class: "inline-flex h-9 min-w-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 font-semibold text-slate-700 transition hover:bg-slate-50" %>
+        <% end %>
+      <% end %>
+
+      <% if pagy.next %>
+        <%= link_to "Next", url_for(request.query_parameters.merge(page: pagy.next)), class: "inline-flex items-center justify-center rounded-md border border-slate-200 bg-white px-3 py-2 font-semibold text-slate-700 transition hover:bg-slate-50" %>
+      <% else %>
+        <span class="inline-flex items-center justify-center rounded-md border border-slate-100 bg-slate-50 px-3 py-2 font-semibold text-slate-300">Next</span>
+      <% end %>
+    </div>
+  </nav>
+<% end %>
